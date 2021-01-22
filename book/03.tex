@@ -1,0 +1,156 @@
+% Licensed under the Creative Commons Attribution Share Alike 4.0 International.
+% See the LICENCE file in the repository root for full licence text.
+
+\section{反函数}
+
+\begin{definition}{单的,满的,一一对应}
+	设 $f: X \rightarrow Y$ 是一个函数。若对任意的 $x_1, x_2 \in X$，只要 $x_1 \ne x_2$，就有 $f(x_1) \ne f(x_2)$ 成立，则称 $f(x)$ 是\emph{单的}；若 $Y = f(X)$，则称 $f(x)$ 为\emph{满的}；若 $f(x)$ 既是单的又是满的，则称它为一个\emph{一一对应}。
+\end{definition}
+
+\begin{definition}{反函数}
+	设 $f: X \rightarrow Y$ 是一个一一对应，定义函数 $g: Y \rightarrow X$：$\forall y \in Y$，$g(y)$ 的函数值是 $y = f(x)$ 所唯一确定的 $x \in X$（即 $g(y) = x$），则我们称 $g(y)$ 是 $f(x)$ 的反函数，记为 $g = f^{-1}$。
+\end{definition}
+
+注意，由于 $g$ 的定义域和对应法则是确定的，所以：只要 $f$ 是一个一一对应，就一定能构造出它的反函数。
+
+\subsection{反函数的性质}
+
+\begin{enumerate}
+	\item $f(f^{-1}(y)) = y \pod{\forall y \in Y}$；
+	\item $f^{-1}(f(x)) = x \pod{\forall x \in X}$；
+	\item 习惯上，也记 $y = f(x)$ 的反函数为 $y = f^{-1}(x) \pod{x \in Y}$；
+	\item $y = f(x), y = f^{-1}(x)$ 的图像关于 $y = x$ 对称。
+\end{enumerate}
+
+\subsection{例题}
+
+\subsubsection*{例 1}
+
+求 $y = f(x) = \sinh x = \dfrac{e^x - e^{-x}}{2}$ 的反函数。
+
+\begin{solve}[反解 $x$]
+	令 $z = e^x$，解得 $y = \ln \left( x + \sqrt{x^2 + 1} \right) \pod{x \in (-\infty, +\infty)}$。（注意写定义域）
+\end{solve}
+
+\subsubsection*{例 2}
+
+设 $y = f(x)$ 为定义在 $X$ 上的一个函数，并且记 $Y = f(X)$。求证：若存在 $Y$ 上定义的函数 $g(y)$，使得 $g(f(x)) = x$，则 $f(x)$ 的反函数存在，而且 $g = f^{-1}$。
+
+\begin{proof}
+	容易验证，复合函数是单的充分必要条件是其内、外函数都是单的。
+
+	由 $g(f(x)) = x$ 是 $X$ 的恒等函数可知，$f(x)$ 是单的，从而 $f(x)$ 是 $X$ 到 $Y$ 的一一对应。于是 $f(x)$ 的反函数存在，而且 $\forall y \in Y = f(X)$，有 $g(y) = g(f(x)) = x = f^{-1}(y)$。可知 $g$ 与 $f^{-1}$ 的定义域和对应法则均相同，即有 $g = f^{-1}$。
+\end{proof}
+
+需要注意的是，上题中的 $Y$ 必须是值域。如果写成 $f: X \rightarrow Y$，则不成立。举一个反例即可：
+$$
+\begin{aligned}
+	f:~&[0, 1] \rightarrow [-1, 1]
+	\\&
+	x \mapsto \sqrt x
+\end{aligned}
+, \quad
+\begin{aligned}
+	g:~&[-1, 1] \rightarrow [0, 1]
+	\\&
+	x \mapsto x^2
+\end{aligned}
+$$
+它们不互为反函数。
+
+\section{函数的性质}
+
+\subsection{有界性}
+
+\begin{definition}{有上界,上界,有下界,下界,有界}
+	设 $y = f(x)$ 是定义在 $X$ 上的函数。
+
+	\begin{enumerate}
+		\item 若 $\exists M, \st \forall x \in X, f(x) \le M$，则称 $f(x)$ 在 $X$ 上\emph{有上界}，$M$ 是一个\emph{上界}；
+		\item 类似地，可定义\emph{有下界}、\emph{下界（$m$）}、\emph{有界}。
+	\end{enumerate}
+\end{definition}
+
+我们实际上讨论的是值域 $f(X)$ 的有界性。
+
+用肯定的语气说明无上界：$\forall M, \exists x_0 \in X, \st f(x_0) > M$。（任选一个 $M$ 都能找到一个反例）
+
+\subsection{有界性}
+
+\begin{definition}{单调上升,单调下降,严格单调上升,严格单调下降}
+	设 $y = f(x)$ 是定义在 $X$ 上的函数。
+
+	\begin{enumerate}
+		\item $\forall x_1, x_2 \in X$，只要 $x_1 < x_2$ 便有 $f(x_1) \le f(x_2)$（$f(x_1) \ge f(x_2)$），则称 $f(x)$ 在 $X$ 上\emph{单调上升}（\emph{单调下降}）；
+		\item $\forall x_1, x_2 \in X$，只要 $x_1 < x_2$ 便有 $f(x_1) < f(x_2)$（$f(x_1) > f(x_2)$），则称 $f(x)$ 在 $X$ 上\emph{严格单调上升}（\emph{严格单调下降}）；
+	\end{enumerate}
+\end{definition}
+
+注意：
+
+\begin{enumerate}
+	\item 严格单调（前提：$f: X \rightarrow Y$ 中的 $Y$ 是值域）是存在反函数的充分条件；
+	\item 存在反函数未必单调，如函数 $y = f(x) \begin{cases} x, & x \in [0, 1] \cap \Q \\ 1 - x, & x \in [0, 1] \backslash \Q \end{cases}$，这个函数的反函数就是它自己，但 $f(x)$ 在 $[0, 1]$ 的任何子区间都不是单调的。
+\end{enumerate}
+
+\subsection{周期性}
+
+\begin{definition}{周期函数,一个周期,基本周期}
+	设 $y = f(x)$ 在 $X$ 上的函数，若存在 $T > 0, \st \forall x \in X, f(x + T) = f(x)$，则称 $f(x)$ 为\emph{周期函数}，$T$ 称为 $f(x)$ 的\emph{一个周期}。若存在一个最小的周期 $T_0$，则称 $T_0$ 为 $f(x)$ 的\emph{基本周期}。
+\end{definition}
+
+注意：并非所有的周期函数都有基本周期，如 $y = 0$。
+
+\subsection{例题}
+
+\subsubsection*{例 1}
+
+容易验证，任何正有理数都是狄利克雷函数 $D(x)$ 的周期，因此它没有基本周期。
+
+\subsubsection*{例 2}
+
+设 $f(x)$ 为定义在 $\R$ 上的周期函数，并且有基本周期 $\tau > 0$。证明：若 $\forall x \in (0, \tau)$，有 $f(x) \ne f(0)$，则 $g(x) = f(x^2)$ 不是周期函数。
+
+\begin{proof}[反证法]
+	假设 $g(x)$ 是周期函数，则存在一周期 $T$，使得 $\forall x, g(x) = g(x + T)$ 成立。由此有：
+	$$
+	g(0) = f(0) = g(T) = f(T^2)
+	$$
+	由周期函数，可知 $T^2 = k \tau$。考察：
+	$$
+	\begin{aligned}
+		g(\sqrt{(k + 1)\tau}) &= g(\sqrt{(k + 1)\tau} + \sqrt{k \tau})
+		\\&=
+		f \left( (2k + 1) \tau + 2 \sqrt{k (k + 1)} \tau \right)
+		\\&=
+		f \left(2 \sqrt{k(k + 1)} \tau \right) = f(0) = f(n \tau) \pod {n \in \Z}
+	\end{aligned}
+	$$
+
+	可知 $k(k + 1) = \dfrac{n^2}{4}$，于是可知 $\dfrac{n}{2}$ 是正整数，且满足 $k < \dfrac{n}{2} < k + 1$，不可能。故 $g(x)$ 不是周期函数。
+\end{proof}
+
+\section{初等函数}
+
+双曲函数定义如下：
+$$
+\begin{matrix}
+	\sinh x = \dfrac{e^x - e^{-x}}{2} &
+	\cosh x = \dfrac{e^x + e^{-x}}{2} \\
+	\tanh x = \dfrac{e^x - e^{-x}}{e^x + e^{-x}} &
+	\coth x = \dfrac{e^x + e^{-x}}{e^x - e^{-x}}
+\end{matrix}
+$$
+
+把这四个函数分别称为\emph{双曲正弦}、\emph{双曲余弦}、\emph{双曲正切}、\emph{双曲余切}。可以发现他们的奇偶性与三角函数一致，并且，他们之间还满足：
+$$
+\begin{matrix}
+	\cosh^2 x - \sinh^2 x = 1 &
+	\sinh 2x = 2 \sinh x \cosh x \\
+	\cosh 2x = \cosh^2 x + \sinh^2 x &
+	\sinh^2 \dfrac{x}{2} = \dfrac{\cosh x - 1}{2}
+\end{matrix}
+$$
+等等，与三角函数十分相似。
+
+令 $X = \cosh x, Y = \sinh x$，则他们满足双曲方程 $X^2 - Y^2 = 1$。

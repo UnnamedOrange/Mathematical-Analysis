@@ -1,0 +1,162 @@
+% Licensed under the Creative Commons Attribution Share Alike 4.0 International.
+% See the LICENCE file in the repository root for full licence text.
+
+\section{集合}
+
+集合的概念是人为定义的，是最基本的概念，不能用别的概念加以定义。
+
+\begin{definition}{集合}
+	将具有某种特性的对象的全体放在一起作为一个整体，通常用大写字母 $A, B, C, X, Y$ 等表示。
+\end{definition}
+
+这些对象称为\emph{元素}，通常用小写字母 $a, b, c, x, y$ 等表示。
+
+$$
+a \underset{属于}{\in} A
+\qquad
+a \underset{不属于}{\not \in} A
+$$
+
+$$
+\text{表示法}
+\begin{cases}
+\text{列举法} & A = \{ 1, 2, 3 \}
+\\
+\text{描述法} & A = \{ x: x^2 - 1 = 0 \text{ 的根}\}
+\end{cases}
+$$
+
+$$
+\text{集合间关系}
+\begin{cases}
+A \subseteq B
+\\
+A = B & \pod{A \subseteq B \text{ 且 } B \subseteq A}
+\\
+A \subset B & \pod{A \subseteq B \text{ 且 } A \ne B}
+\end{cases}
+$$
+
+$$
+\text{集合的运算}
+\begin{cases}
+A \cup B = \{ x: x \in A \text{ 或 } x \in B \} & \text{并}
+\\
+A \cap B = \{ x: x \in A \text{ 且 } x \in B\} & \text{交}
+\\
+A \backslash B = \{ x: x \in A \text{ 且 } x \not \in B \} & \text{差}
+\end{cases}
+$$
+
+\section{实数的连续性}
+
+有理数关于四则运算封闭（即有理数中任何两个元素经过四则运算后得到的数仍然是有理数），并且任何两个有理数之间必有有理数存在（称为\emph{稠密性}）。但是有理数并没有布满整个数轴，还留有许多空隙（如 $\sqrt 2$）。为了研究极限，需要填补这些空隙，方法是引入新的运算。
+
+\subsection{戴德金分划}
+
+\begin{definition}{分划}
+	设 $S$ 是一个有大小顺序的非空数集，$A$ 和 $B$ 是它的两个子集，如果它们满足以下条件：
+	\begin{enumerate}
+		\item $A \ne \varnothing, B \ne \varnothing$（相当于不要在无穷远处切）；
+		\item $A \cup B = S$；
+		\item $\forall a \in A, \forall b \in B, a < b$；
+		\item $A$ 中无最大数（相当于切一刀时，若刀刃上的数字 $x$ 在 $S$ 中，则认为 $x \in B, x \not \in A$）。
+	\end{enumerate}
+	则我们将 $A, B$ 称为 $S$ 的一个\emph{分划}，记为 $(A | B)$。（一个分划可以唯一地对应一个数）
+\end{definition}
+
+\begin{definition}{有理分划,无理分划}
+	考虑到有理数有许多空隙，因此有理数系 $\Q$ 的任意分划 $(A | B)$ 一定是以下两种情况之一：
+	\begin{enumerate}
+		\item $B$ 中有最小数，此时称 $(A | B)$ 是一个\emph{有理分划}（切在一个有理数上）；
+		\item $B$ 中不存在最小数，此时称 $(A | B)$ 是一个\emph{无理分划}（没有切在有理数上）。
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}{实数系}
+	有理数系 $\Q$ 的所有分划对应的数构成了一个集合，称这个集合为\emph{实数系}，记为 $\R$。
+\end{definition}
+
+\textbf{已经证明}，实数满足以下三个性质：稠密性（两个实数之间必有实数）、连通性（$a, b \in \R$，则 $a, b$ 之间所有数都属于 $\R$）、戴德金分割定理。
+
+\begin{theorem}[戴德金分割定理]
+	对 $\R$ 的任一分割 $(A | B)$，$B$ 中必有最小数。
+\end{theorem}
+
+戴德金分割定理意味着我们可以将数轴上的点与实数建立一一对应的关系，因为 $\R$ 已经将实轴填满了。具体建立方式大致如下：
+
+\begin{quotation}
+	$x \ge 0$：在原点 $O$ 右边且到 $O$ 的距离为 $x$；
+
+	$x < 0$：在原点 $O$ 左边且到 $O$ 的距离为 $-x$。
+
+	\bigskip
+
+	原点 $O$：$0$；
+
+	原点 $O$ 右边的点 $A$：$A$ 到 $O$ 的距离 $x$ 与 $x \in \R$ 对应；
+
+	原点 $O$ 左边的点 $A$：$A$ 到 $O$ 的距离 $x$ 与 $-x \in \R$ 对应。
+\end{quotation}
+
+\section{有界集与确界}
+
+\begin{definition}{有上界的,上界,有下界的,下界,有界的}
+	设集合 $E \subset \R \pod{E \ne \varnothing}$，
+	\begin{enumerate}
+		\item 若 $\exists M \in \R, \st \forall x \in E, x \le M$，则 $E$ 是\emph{有上界的}，$M$ 为\emph{一个上界}；
+		\item 若 $\exists m \in \R, \st \forall x \in E, x \ge m$，则 $E$ 是\emph{有下界的}，$m$ 为\emph{一个下界}；
+		\item 若 $E$ 既有上界，又有下界，则 $E$ 是\emph{有界的}。
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}{上确界,下确界}
+	设 $E \subset \R \pod{E \ne \varnothing}$，
+	\begin{enumerate}
+		\item 若 $M \in \R$ 是 $E$ 的一个上界，且 $\forall \varepsilon > 0, \exists x' \in E, \st x' > M - \varepsilon$，则称 $M$ 为 $E$ 的一个\emph{上确界}，记为 $M = \sup E = \sup\limits_{x \in E}\{x\}$；（是上界，且减去一个任意小的数都存在数比它大）
+		\item 若 $m \in \R$ 是 $E$ 的一个下界，且 $\forall \varepsilon > 0, \exists x' \in E, \st x' < m + \varepsilon$，则称 $M$ 为 $E$ 的一个\emph{下确界}，记为 $M = \inf E = \inf\limits_{x \in E}\{x\}$。
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}{最大数,最小数}
+	\begin{enumerate}
+		\item 若 $\sup E \in E$，则可以记 $\sup E$ 为 $\max E$，这时上确界即为 $E$ 中的\emph{最大数}；
+		\item 若 $\inf E \in E$，则可以记 $\inf E$ 为 $\min E$，这时下确界即为 $E$ 中的\emph{最小数}。
+	\end{enumerate}
+\end{definition}
+
+正无穷（大）$+\infty$、负无穷（大）$-\infty$：是记号不是实数。
+
+\begin{definition}{无上界的,无下界的}
+	\begin{enumerate}
+		\item $\forall M, \exists x \in E, \text{s.t. } x > M$，则称 $E$ 是\emph{无上界的}，可以记为 $\sup E = +\infty$；
+		\item $\forall m, \exists x \in E, \text{s.t. } x < m$，则称 $E$ 是\emph{无下界的}，可以记为 $\inf E = -\infty$。
+	\end{enumerate}
+\end{definition}
+
+注意，记号的意思不是说 $E$ 的上确界是正无穷，而是说 $E$ 没有上界。
+
+\begin{theorem}[确界存在定理]
+	非空有上界的实数集必有上确界；非空有下界的实数集必有下确界。
+\end{theorem}
+
+\begin{proof}
+	只证非空有上界的实数集必有上确界。设 $E$ 是一个非空有上界的实数集。
+
+	情况 1：若 $E$ 中存在最大数 $M$，显然 $M = \max E = \sup E$，即显然存在上确界。
+
+	情况 2：若 $E$ 中不存在最大数 $M$。
+
+	设 $B$ 是由 $E$ 的所有上界组成的集合，$A = \R \backslash B$。下面证明 $(A | B)$ 是 $\R$ 的一个分划：
+
+	\begin{enumerate}
+		\item 由 $E$ 有上界，可知 $B \ne \varnothing$；由 $E \ne \varnothing$，可知 $A \ne \varnothing$。
+		\item 由 $A = \R \backslash B$，可知 $A \cup B = \R$。
+		\item 由 $B$ 是 $E$ 的上界，可知 $\forall a \in A, \forall b \in B, a < b$。
+		\item 由 $E$ 不存在最大数，可知 $A$ 中没有最大数。
+	\end{enumerate}
+
+	故 $(A | B)$ 的确是 $\R$ 的一个分划。由戴德金分割定理，可知 $B$ 存在最小数 $M$，由 $B$ 是 $E$ 的所有上界组成的集合，可知 $E$ 有上确界 $M$。
+\end{proof}
+
+非空有下界的实数集必有下确界同理。可以通过将所有数取相反数来证明，也可以通过稍稍修改分划的定义来证明。

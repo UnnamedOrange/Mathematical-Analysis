@@ -1,0 +1,116 @@
+% Licensed under the Creative Commons Attribution Share Alike 4.0 International.
+% See the LICENCE file in the repository root for full licence text.
+
+\documentclass[UTF8, a4paper]{article}
+\usepackage{ctex}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{ulem}
+\normalem
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{color}
+\usepackage{xifthen}
+\usepackage{framed}
+\usepackage{multicol}
+\usepackage[version=4]{mhchem}
+\usepackage[top = 0.8in, bottom = 0.8in, left = 0.8in, right = 0.8in]{geometry}
+
+\usepackage{makeidx}
+\makeindex
+
+\newcommand \insertsubject {{数学分析}}
+\title{\insertsubject}
+\author{Orange Lee}
+
+\hypersetup
+{
+	pdfauthor = Orange Lee,
+	pdftitle = \insertsubject,
+	pdfsubject = \insertsubject,
+	pdfkeywords = \insertsubject,
+	colorlinks = true,
+	linkcolor = black,
+	anchorcolor = black,
+	citecolor = black,
+	urlcolor = black
+}
+
+% index
+\newcommand \idx[1] {#1\index{#1}}
+
+% def
+\makeatletter
+\newcommand \indexer[1]
+{%
+	\@for\@myvar:={#1}\do{\index{\@myvar}}%
+}
+\makeatother
+\newenvironment{definition}[1]
+{
+	\definecolor{shadecolor}{RGB}{233, 233, 243}
+	\begin{shaded*}
+	\indexer{#1}
+	\noindent
+	\textbf{Def} \emph{#1}:%
+}
+{
+	\end{shaded*}
+}
+
+% theorem
+\newcounter{cTheorem}
+\newenvironment{theorem}[1][]
+{
+	\definecolor{shadecolor}{RGB}{243, 233, 233}
+	\begin{shaded*}
+	\noindent
+	\textbf{Theorem}
+	\ifthenelse{\isempty{#1}}{\stepcounter{cTheorem}\arabic{cTheorem}}{\emph{#1}\index{#1}}:%
+}
+{
+	\end{shaded*}
+}
+
+% proof
+\renewenvironment{proof}[1][]
+{
+	\definecolor{shadecolor}{RGB}{237, 237, 237}
+	\begin{shaded*}
+	{\noindent \textbf{证明}~{#1}}
+
+}
+{
+	\end{shaded*}
+}
+
+% solve
+\newenvironment{solve}[1][]
+{
+	\definecolor{shadecolor}{RGB}{237, 237, 237}
+	\begin{shaded*}
+	{\noindent \textbf{解}~{#1}}
+
+}
+{
+	\end{shaded*}
+}
+
+% 快捷指令
+\newcommand \N {\mathbb N}
+\newcommand \Q {\mathbb Q}
+\newcommand \R {\mathbb R}
+\newcommand \Z {\mathbb Z}
+\newcommand \st {\text{s.t.~}}
+\newcommand \arccot {\mathop{\mathrm{arccot}}}
+\newcommand \sgn {\mathop{\mathrm{sgn}}}
+\newcommand \e {\mathrm e}
+\newcommand \llim {\mathop{\underline \lim}}
+\newcommand \ulim {\mathop{\overline \lim}}

@@ -1,0 +1,297 @@
+% Licensed under the Creative Commons Attribution Share Alike 4.0 International.
+% See the LICENCE file in the repository root for full licence text.
+
+\section{几个常用不等式}
+
+\subsection{三角不等式}
+
+实数 $x$ 的绝对值定义为：
+$$
+|x| =
+\begin{cases}
+x & x \ge 0
+\\
+-x & x < 0
+\end{cases}
+$$
+
+$\forall x,y \in \R$，有 $-|x| \le x \le |x|, -|y| \le y \le |y|$，相加得：
+$$
+-(|x| + |y|) \le x + y \le (|x| + |y|)
+$$
+
+由上式，根据含绝对值的不等式的等价变形，有：
+$$
+|x + y| \le (|x| + |y|)
+$$
+
+称上式为\emph{三角不等式}。令 $x = x - y$，由三角不等式可得 $|x - y| \ge |x| - |y|$；令 $y = y - x$，由三角不等式可得 $|x - y| \ge |y| - |x|$，于是有：
+$$
+||x| - |y|| \le |x - y|
+$$
+
+\subsection{伯努利不等式}
+
+$$
+\forall x \ge -1, n \in \N, \quad (1 + x)^n \ge 1 + nx
+$$
+
+称上式为\emph{伯努利不等式}。
+
+当 $x \ge 0$ 时，用二项式定理即可证明。当 $x \ge -1$ 时，用数学归纳法证明。
+
+\begin{proof}[数学归纳法]
+	当 $n = 1$ 时，显然成立。
+
+	当 $n \ge 2$ 时，假设在 $k = n - 1$ 时成立，下面证明在 $k = n$ 时也成立。
+	$$
+	\begin{aligned}
+		(1 + x)^k &= (1 + x)(1 + x)^{k - 1}
+		\\&\ge
+		(1 + x)(1 + (k - 1)x)
+		\\&=
+		1 + (k - 1)x + x + (k - 1) x^2
+		\\&=
+		1 + kx + (k - 1) x^2
+		\\&\ge
+		1 + kx
+	\end{aligned}
+	$$
+	成立。由数学归纳法知，不等式对所有正整数 $n$ 成立。
+\end{proof}
+
+\subsection{算术-几何平均不等式}
+
+对任意 $n$ 个非负实数 $x_1, x_2, \ldots, x_n$，有：
+$$
+\dfrac{x_1 + x_2 + \cdots + x_n}{n} \ge \sqrt[n]{x_1 x_2 \cdots x_n}
+$$
+
+称上式为为\emph{算术-几何平均不等式}。
+
+\begin{proof}[数学归纳法]
+	（有选择数的自由度，所以挑较小的 $n - 1$ 个。好处是我们可以得到“较小的 $n - 1$ 个数的均值小于等于最大的那个数”这个额外关系）
+
+	当 $n = 1$ 时，$x_1 \ge x_1$，显然成立。
+
+	当 $n \ge 2$ 时，假设当 $k = n - 1$ 时成立，下面证明对 $k = n$ 时也成立。
+
+	不妨设 $x_k$ 最大，则 $x_k \ge \dfrac{x_1 + \cdots + x_{k - 1}}{k - 1} \ge \sqrt[k - 1]{x_1 x_2 \cdots x_{k - 1}}$。设 $y = \dfrac{x_1 + x_2 + \cdots + x_{k - 1}}{k - 1}$，则有：
+	$$
+	\begin{aligned}
+		\left( \dfrac{x_1 + x_2 + \cdots + x_k}{k} \right)^k &= \left( \dfrac{x_1 + x_2 + \cdots + x_k - ky}{k} + y \right)^k
+		\\&=
+		\left( \dfrac{x_k - y}{k} + y \right)^k
+		\\&\ge
+		y^k + y^{k - 1} k \dfrac{x_k - y}{k}
+		\\&=
+		y^{k - 1} x_k
+		\\&\ge
+		x_1 x_2 \cdots x_k
+	\end{aligned}
+	$$
+	成立。由数学归纳法知，不等式对所有正整数 $n$ 成立。
+\end{proof}
+
+\subsection{例题}
+
+设 $a, b > 0$，求证：
+\begin{enumerate}
+	\item 当 $p > 1$ 时，$a^p + b^p \le (a + b)^p$；
+	\item 当 $0 < p < 1$ 时，$a^p + b^p \ge (a + b)^p$。
+\end{enumerate}
+
+\begin{proof}
+	令 $p = 1 + h \pod{h > 0}$（将分界线从 $1$ 变为 $0$，从无符号差距到有符号差距），有：
+	$$
+	\begin{aligned}&
+		(a + b)^p
+		\\=~&
+		(a + b)(a + b)^{p - 1}
+		\\=~&
+		a (a + b)^{p - 1} + b (a + b)^{p - 1}
+		\\\ge~&
+		a^p + b^p
+	\end{aligned}
+	$$
+
+	令 $p = 1 - h \pod{h > 0}$，有：
+	$$
+	\begin{aligned}&
+		(a + b)^p
+		\\=~&
+		a (a + b)^{p - 1} + b (a + b)^{p - 1}
+		\\\le~&
+		a^p + b^p
+	\end{aligned}
+	$$
+\end{proof}
+
+\subsection{常用记号}
+
+\begin{definition}{无穷区间}
+	$(-\infty, b), (-\infty, b], (a, +\infty), [a, \infty), (-\infty, +\infty)$。
+\end{definition}
+
+\begin{definition}{邻域}
+	$(a - \varepsilon, a + \varepsilon) \pod{\varepsilon > 0}$，称之为 $a$ 的一个 \emph{$\varepsilon$ 邻域}，记为 $U(a, \varepsilon)$。
+\end{definition}
+
+\begin{definition}{去心邻域}
+	$(a - \varepsilon, a + \varepsilon) \backslash \{ a \} \pod{\varepsilon > 0}$，称之为 $a$ 的一个去心邻域，记为 $U_0(a, \varepsilon)$。
+\end{definition}
+
+\section{函数的定义}
+
+\begin{definition}{函数}
+	对于给定的集合 $X \subseteq \R$，如果存在某种对应法则 $f$，使得对 $X$ 中的每一个数 $x$，在 $\mathbb R$ 中存在唯一的数 $y$ 与之对应，则称对应法则 $f$ 为从 $X$ 到 $\mathbb R$ 的一个\emph{函数}。记作：
+	$$
+	\begin{aligned}
+		f:~&X \rightarrow \R
+		\\&
+		x \mapsto y = f(x)
+	\end{aligned}
+	$$
+
+	（需要指明 $f$、$X$、$\R$，才是一个函数，光说 $f$ 不是函数；$\R$ 不是值域，只是说从 $X$ 到 $\R$）
+\end{definition}
+
+函数的 3 个基本要素是：定义域、值域、对应法则。当这三者相等时，函数相等。当然，若定义域和对应法则相同，值域也相同，因此只用比较定义域和对应法则。
+
+\begin{definition}{值}
+	$y$ 称为 $f$ 在点 $x$ 的\emph{值}。
+\end{definition}
+
+\begin{definition}{定义域}
+	$X$ 称为函数 $f$ 的\emph{定义域}。
+\end{definition}
+
+\begin{definition}{值域}
+	数集 $\{f(x): x \in X\}$ 称为函数 $f$ 的\emph{值域}，记为 $f(X)$。
+\end{definition}
+
+\begin{definition}{自变量,因变量}
+	$x$ 称作\emph{自变量}，$y$ 称作\emph{因变量}。
+\end{definition}
+
+\begin{definition}{函数的图像}
+	设 $y = f(x)$ 是定义在 $X$ 上的函数。称平面点集 $T = \{(x, y): y = f(x), x \in X\}$ 为\emph{函数的图像}。
+\end{definition}
+
+\subsection{基本初等函数}
+
+\begin{enumerate}
+	\item 常值函数 $y = C$；
+	\item 幂函数 $y = x^\alpha \pod{\alpha > 0}$；
+	\item 指数函数 $y = a^x \pod{a > 0}$；
+	\item 对数函数 $y = \log_a x \pod{a > 0, a \ne 1}$；
+	\item 三角函数 $y = \sin x$、$y = \cos x$、$y = \tan x$、$y = \cot x$；
+	\item 反三角函数 $y = \arcsin x$、$y = \arccos x$、$y = \arctan x$、$y = \arccot x$。
+\end{enumerate}
+
+以上函数统称为\emph{基本初等函数}。
+
+\subsection{符号函数}
+
+$$
+y = \sgn x =
+\begin{cases}
+	1, & x > 0
+	\\
+	0, & x = 0
+	\\
+	-1, & x < 0
+\end{cases}
+$$
+
+\subsection{狄利克雷（Dirichlet）函数}
+
+$$
+y = D(x) =
+\begin{cases}
+	1, & x \in \Q
+	\\
+	0, & x \in \R \backslash \Q
+\end{cases}
+$$
+
+\subsection{高斯（Gauss）取整函数}
+
+$y = [x]$ 表示不超过 $x$ 的最大整数。若 $n \le x < n + 1$，则 $[x] = n$。
+
+\subsection{黎曼（Riemann）函数}
+
+$$
+y = R(x) =
+\begin{cases}
+	\dfrac{1}{p}, & x = \dfrac{q}{p} \in (0, 1), \gcd(p, q) = 1
+	\\
+	0, & x \in[0, 1] \backslash \Q
+	\\
+	1, & x = 0 ~\text{或}~ 1
+\end{cases}
+$$
+
+\subsection{特征函数}
+
+$$
+y = \chi_E(x) =
+\begin{cases}
+	1, & x \in E
+	\\
+	0, & x \not \in E
+\end{cases}
+$$
+
+\section{构造新函数}
+
+\subsection{函数的四则运算}
+
+设 $y = f_j(x), x \in X_j \subset \R \pod{j = 1, 2}$ 为两个已知函数，且 $X = X_1 \cap X_2 \ne \varnothing$（即：新函数的定义域是原定义域的交集），则可定义：
+
+$$
+\begin{gathered}
+	(f_1 \pm f_2)(x) = f_1(x) \pm f_2(x) \pod{x \in X}
+	\\
+	(f_1 f_2)(x) = f_1(x)f_2(x) \pod{x \in X}
+	\\
+	\dfrac{f_1}{f_2}(x) = \dfrac{f_1(x)}{f_2(x)} \pod{f_2(x) \ne 0} \pod{x \in X}
+\end{gathered}
+$$
+
+\subsection{函数的限制和延拓}
+
+\begin{definition}{限制,延拓}
+	设函数 $f(x), x \in X_1$ 和 $g(x), x \in X_2$ 满足 $X_1 \subset X_2$，且 $f(x) \equiv g(x), \forall x \in X_1$，则称 $f(x)$ 是 $g(x)$ 在 $X_1$ 上的\emph{限制}，而 $g(x)$ 是 $f(x)$ 在 $X_2$ 上的\emph{延拓}。（在共享的一段上相同即可）
+\end{definition}
+
+对于两个函数而言，只有当他们的定义域及对应关系完全一样时，才能说它们是相等的。而函数的表达式不同不一定代表对应关系不同，例如 $|x| = x \sgn x$。
+
+\subsection{函数的复合}
+
+\begin{definition}{复合函数,内函数,外函数}
+	设 $y = f_j(x), x \in X_j \subset \R \pod{j = 1, 2}$ 为两个函数，若 $Y_1 = f_1(X_1) \subseteq X_2$，则定义在 $X_1$ 上的函数 $y = f_2(f_1(x))$ 称为 $f_1$ 和 $f_2$ 的\emph{复合函数}，记作 $f_2 \circ f_1: X_1 \rightarrow \R$。通常称 $f_1$ 为该复合函数的\emph{内函数}，$f_2$ 为\emph{外函数}。（内函数的值域包含于外函数的定义域）
+\end{definition}
+
+一般来说，函数复合不具有交换律。ß
+
+\subsection{例题}
+
+设 $f(x) = \dfrac{x}{\sqrt{1 + x^2}}$，求 $\underset{n ~\text{个}}{\underbrace{f \circ \cdots \circ f}}(x)$ 的表达式。
+
+\begin{solve}
+	$$
+	(f \circ f)(x) = \dfrac{\dfrac{x}{\sqrt{1 + x^2}}}{\sqrt{1 + \dfrac{x^2}{1 + x^2}}} = \dfrac{x}{\sqrt{1 + 2x^2}}
+	$$
+
+	猜想 $(\underset{n ~\text{个}}{\underbrace{f \circ f \circ \cdots \circ f}})(x) = \dfrac{x}{\sqrt{1 + nx^2}}$。假设 $k = n - 1$ 时成立，下面证明 $k = n$ 时也成立：
+	$$
+	\begin{aligned}
+		(\underset{k ~\text{个}}{\underbrace{f \circ f \circ \cdots \circ f}})(x) &= f \left( \dfrac{x}{\sqrt{1 + (k - 1) x^2}} \right)
+		\\&=\cdots
+		\\&=
+		\dfrac{x}{\sqrt{1 + kx^2}}
+	\end{aligned}
+	$$
+	成立。由数学归纳法知 $(\underset{n ~\text{个}}{\underbrace{f \circ f \circ \cdots \circ f}})(x) = \dfrac{x}{\sqrt{1 + nx^2}}$。
+\end{solve}

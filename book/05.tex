@@ -1,0 +1,139 @@
+% Licensed under the Creative Commons Attribution Share Alike 4.0 International.
+% See the LICENCE file in the repository root for full licence text.
+
+\section{序列极限的性质}
+
+\subsection{有界性}
+
+\begin{definition}{有界的}
+	设 $\{x_n\}$ 是一个序列。若 $\exists M > 0, \forall n, |x_n| \le M$，则称 $\{x_n\}$ 是\emph{有界的}。
+\end{definition}
+
+记号：
+
+\begin{enumerate}
+	\item 若 $\{x_n\}$ 是有界的，记 $x_n = O(1)$（读作大 $O$）。
+	\item 若存在 $M_2 > M_1 > 0$ 和正整数 $N$，使得当 $n > N$ 时，有 $M_1 < |x_n| < M_2$，则以 $x_n = O_0(1)$。
+\end{enumerate}
+
+\begin{theorem}
+	改变一个序列 $\{x_n\}$ 的有限多项，不改变其收敛性和极限值（如果存在）。（根据定义显然（取有限项中最大下标 $N_1$，取 $N_2 > N_1$））
+\end{theorem}
+
+\begin{theorem}[序列极限的唯一性]
+	收敛序列的极限是唯一的。
+\end{theorem}
+
+\begin{proof}[证明唯一性的方法：反证，假设有两个不一样，导出矛盾]
+	假设不唯一，设 $\lim\limits_{n \rightarrow \infty} x_n$ 既为 $a$ 又为 $b$（不妨设 $b > a$）。
+
+	则 $\exists \varepsilon_0 = \dfrac{b - a}{2}, \st \exists N_1 \in \N, \forall n > N_1, |x_n - a| < \varepsilon_0$，且 $\exists N_2 \in \N, \forall n > N_2, |x_n - b| < \varepsilon_0$。
+
+	取 $N = \max\{N_1, N_2\}$，则 $\forall n > N, |x_n - a| < \varepsilon_0, |x_n - b| < \varepsilon_0$。由此可得 $x_n < \dfrac{a + b}{2}$ 且 $x_n > \dfrac{a + b}{2}$，矛盾。证毕。
+\end{proof}
+
+\begin{theorem}[序列极限的有界性]
+	收敛序列是有界的。（逆命题不正确，反例：$1, -1, 1, -1, \ldots$）
+\end{theorem}
+
+\begin{proof}
+	取 $\varepsilon_0 = 1$，可知 $\exists N \in \N, \forall n > N, |x_n - a| < \varepsilon_0$。于是有：
+	$$
+	|x_n| \le \max\{|x_1|, \ldots, |x_N|, |a| + 1\}
+	$$
+	则 $\{x_n\}$ 是有界的。
+\end{proof}
+
+\subsection{保序性}
+
+\begin{theorem}[序列极限的保序性]
+	设 $\{x_n\}$、$\{y_n\}$ 是两个序列，并且有 $\lim\limits_{n \rightarrow \infty} x_n = a$、$\lim\limits_{n \rightarrow \infty} y_n = b$，则有：
+
+	\begin{enumerate}
+		\item 若 $a < b$，则对任意给定的 $c \in (a, b), \exists N_0 > 0$，使得当 $n > N_0$ 时，有 $x_n < c < y_n$；
+		\item 若 $\exists N_0 > 0$，当 $n > N_0$ 时，有 $x_n \le y_n$，则 $a \le b$。
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	对于任意的 $c \in (a, b)$，记 $\varepsilon_1 = c - a$、$\varepsilon_2 = b - c$。记 $\varepsilon_0 = \min\{\varepsilon_1, \varepsilon_2\}$。
+
+	由极限定义，对于 $\varepsilon_0$，$\exists N_1 \in \N, \st \forall n > N_1, |x_n - a| < \varepsilon_0$，$\exists N_2 \in \N, \st \forall n > N_2, |y_n - b| < \varepsilon_0$。
+
+	取 $N = \max\{N_1, N_2\}$，则 $\forall n > N, |x_n - a| < \varepsilon_0, |y_n - b| < \varepsilon_0$，由此可得 $x_n < c, y_n > c$。证毕。
+
+	\bigskip
+
+	（考虑反证）假设 $a > b$，取 $\varepsilon_0 = \dfrac{a - b}{2}$，则 $\exists N \in \N, \st \forall n > N_1, |x_n - a| < \varepsilon_0, |y_n - b| < \varepsilon_0$。取 $N = \max\{N_0, N_1\}$，则当 $n > N$ 时，$x_n > \dfrac{b + a}{2}, y_n < \dfrac{b + a}{2}$，与 $x_n \le y_n$ 矛盾。证毕。
+\end{proof}
+
+注意：对于保序性的第二条，若改为：“有 $x_n < y_n$，则 $a < b$。”则不对。反例：$x_n = 1 - \dfrac{1}{n}$，$y_n = 1 + \dfrac{1}{n}$。
+
+序列极限的保序性有以下推论。
+
+\begin{theorem}
+	设 $\lim\limits_{n \rightarrow \infty} x_n = a > 0$，则对任给 $0 < a' < a, \exists N_1 > 0$，使得当 $n > N_1$ 时，有 $x_n > a'$；若 $\lim\limits_{n \rightarrow \infty} x_n = b < 0$，则对任给 $0 > b' > b, \exists N_2 > 0$, 使得当 $n > N_2$ 时，有 $x_n < b'$。
+\end{theorem}
+
+\subsection{极限的四则运算}
+
+\begin{theorem}
+	设 $\lim\limits_{n \rightarrow \infty} x_n = a$、$\lim\limits_{n \rightarrow \infty} y_n = b$，则：
+
+	\begin{enumerate}
+		\item $\lim\limits_{n \rightarrow \infty} (x_n \pm y_n) = a \pm b$；
+		\item $\lim\limits_{n \rightarrow \infty} x_n y_n = ab$；
+		\item $\lim\limits_{n \rightarrow \infty} \dfrac{x_n}{y_n} = \dfrac{a}{b} \pod{b \ne 0, y_n \ne 0}$。
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}[1]
+	已知 $\forall \varepsilon > 0, \exists N \in \N, \st \forall n > N, |x_n - a| < \dfrac{\varepsilon}{2}, |y_n - b| < \dfrac{\varepsilon}{2}$。于是 $\forall \varepsilon > 0, \exists N \in \N, \st \forall n > N, |x_n \pm y_n - a \mp b| < \varepsilon$，即 $\lim\limits_{n \rightarrow \infty} (x_n \pm y_n) = a \pm b$。
+\end{proof}
+
+\begin{proof}[2]
+	已知 $\forall \varepsilon > 0, \exists N_0 \in \N, \st \forall n > N, |x_n - a| < \varepsilon, |y_n - b| < \varepsilon$。考察：
+	$$
+	\begin{aligned}
+		|x_n y_n - ab| &= |x_n y_n - y_n a + y_n a - ab|
+		\\&=
+		|y_n(x_n - a) + a(y_n - b)|
+		\\&\le
+		|y_n(x_n - a)| + |a(y_n - b)|
+		\\&\le
+		M_1 |x_n - a| + |a||y_n - b|
+	\end{aligned}
+	$$
+	其中，$M_1$ 是 $|y_n|$ 的一个上界。令 $M = \max\{M_1, |a|\}$，则有 $|x_n y_n - ab| \le M(|x_n - a| + |y_n - b|)$。
+
+	又已知 $\forall \varepsilon > 0, \exists N_1 > 0, \st \forall n > N_1, |x_n - a| < \dfrac{\varepsilon}{2M}, |y_n - b| < \dfrac{\varepsilon}{2M}$，于是 $\forall n > \max\{N_0, N_1\}$，有：
+	$$
+	\begin{aligned}
+		|x_n y_n - ab| &\le M (|x_n - a| + |y_n - b|)
+		\\&\le
+		M(\dfrac{\varepsilon}{2M} + \dfrac{\varepsilon}{2M})
+		\\&=
+		\varepsilon
+	\end{aligned}
+	$$
+
+	即 $\lim\limits_{n \rightarrow \infty} x_n y_n = ab$。
+\end{proof}
+
+\begin{proof}[3]
+	只需证 $\lim\limits_{n \rightarrow \infty} \dfrac{1}{y_n} = \dfrac{1}{b}$。
+
+	由序列极限的保序性的推论，$\exists N_1 \in \N, \st \forall n > N_1, |y_n| > \left| \dfrac{b}{2} \right|$。又已知 $\forall \varepsilon > 0, \exists N_2 \in \N, \st \forall n > N_2, |y_n - b| < \left| \dfrac{b}{2} \right|^2 \varepsilon$。
+
+	当 $N > \max\{N_1, N_2\}$ 时，$\forall n > N, \left| \dfrac{1}{y_n} - \dfrac{1}{b} \right| = \left| \dfrac{b - y_n}{y_n b} \right| \le \left| \dfrac{\left| \dfrac{b}{2} \right|^2 \varepsilon}{\left| \dfrac{b}{2} \right|^2} \right| = \varepsilon$。即 $\lim\limits_{n \rightarrow \infty} \dfrac{x_n}{y_n} = \dfrac{a}{b}$。证毕。
+\end{proof}
+
+\subsection{夹逼收敛原理}
+
+\begin{theorem}[夹逼收敛原理]
+	设序列 $\{x_n\}$，$\{y_n\}$ 和 $\{z_n\}$ 满足：$x_n \le z_n \le y_n, \forall n > N_0$。若 $\lim\limits_{n \rightarrow \infty} x_n = \lim\limits_{n \rightarrow \infty} y_n = a$，则 $\lim\limits_{n \rightarrow \infty} z_n = a$。
+\end{theorem}
+
+\begin{proof}
+	已知 $\forall \varepsilon > 0, \exists N \in \N, \st |x_n - a| < \varepsilon, |y_n - a| < \varepsilon$，于是 $a - \varepsilon < x_n \le z_n \le y_n < a + \varepsilon$，即有 $\lim\limits_{n \rightarrow \infty} z_n = a$。
+\end{proof}

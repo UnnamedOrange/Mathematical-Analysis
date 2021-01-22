@@ -1,0 +1,122 @@
+% Licensed under the Creative Commons Attribution Share Alike 4.0 International.
+% See the LICENCE file in the repository root for full licence text.
+
+\section{函数的奇偶性}
+
+\begin{definition}{奇函数,偶函数}
+	设 $y = f(x)$ 是在 $X$ 上的函数，且 $X$ 关于原点对称，即 $\forall x \in X, -x \in X$。
+
+	\begin{enumerate}
+		\item 若 $\forall x \in X, f(x) = -f(x)$，则 $f(x)$ 是 $X$ 上的\emph{奇函数}（图像关于原点对称）；
+		\item 若 $\forall x \in X, f(x) = -f(x)$，则 $f(x)$ 是 $X$ 上的\emph{偶函数}（图像关于 $y$ 轴对称）。
+	\end{enumerate}
+\end{definition}
+
+\subsection{例题}
+
+设 $y = f(x)$ 是 $X$ 上的奇函数且存在反函数。求证：它的反函数也是奇函数。
+
+\begin{proof}
+	由 $f(x)$ 是奇函数，得 $\forall x \in X, f(-x) = -f(x)$，则若与 $f^{-1}$ 复合，得：$f^{-1}(f(-x)) = f^{-1}(-f(x))$。则 $\text{L.H.S} = -x = -f^{-1}(f(x))$，则 $\forall y \in f(X), -f^{-1}(y) = f^{-1}(-y)$，则反函数也为奇函数。
+\end{proof}
+
+\section{序列的极限}
+
+\begin{definition}{序列,通项}
+	\emph{序列}是正整数集 $\N$ 到实数集 $\R$ 的一个函数 $f: \N \rightarrow \R$。
+
+	将序列 $x_1 = f(1), x_2 = f(2), \ldots$ 记为 $\{x_n\}$，其中 $x_n$ 称为\emph{通项}。
+\end{definition}
+
+有时也把一个序列的所有数作成的集合记为 $\{x_n\} = f(\N)$。通过在前面加“集合”和“序列”来区分。
+
+\begin{definition}{序列收敛,序列极限}
+	设序列 $\{x_n\}$。若 $\exists a \in \R, \st \forall \varepsilon > 0, \exists N \in \N$，当 $n > N$ 时，有 $|x_n - a| < \varepsilon$。则称\emph{序列收敛}，而 $a$ 为\emph{序列极限}（或称序列 $x_n$ 是\emph{收敛于 $a$} 的）。记为 $\lim\limits_{b \rightarrow \infty} x_n = a$，或 $x_n \rightarrow a\pod{n \rightarrow \infty}$。
+
+	序列收敛的几何意义是 $\forall \varepsilon > 0$，$U(a, \varepsilon)$ 外只有 $\{x_n\}$ 的有限项。
+\end{definition}
+
+\begin{definition}{发散}
+	若不存在使得序列收敛的 $a$，则 $\{x_n\}$ \emph{发散}。
+
+	用肯定的语气描述序列发散：$\forall a \in \R, \exists \varepsilon_0 > 0, \st \forall N \in \N$，总 $\exists n_0 > N$，满足 $|x_{n_0} - a| > \varepsilon_0$，则 $\{x_0\}$ 是\emph{发散序列}。
+\end{definition}
+
+\section{无穷小量}
+
+\begin{definition}{无穷小量}
+	设 $\{x_n\}$ 是一个序列。若 $x_n \rightarrow 0 \pod{n \rightarrow \infty}$，则称序列 $\{x_n\}$ 为\emph{无穷小量}，记为 $x_n = o(1) \pod{n \rightarrow \infty}$。
+\end{definition}
+
+\begin{theorem}
+	设 $\{x_n\}$ 是一个序列。
+
+	\begin{enumerate}
+		\item $\{x_n\}$ 是无穷小量的充分必要条件是 $\{|x_n|\}$ 是无穷小量；
+		\item 若 $\{x_n\}$ 是无穷小量，$M$ 是一个常数，则 $\{M x_n\}$ 是无穷小量；
+		\item $\lim\limits_{n \rightarrow \infty} x_n = a$ 的充分必要条件是 $\{x_n - a\}$ 是无穷小量。
+	\end{enumerate}
+\end{theorem}
+
+\section{无穷大量}
+
+\begin{definition}{正无穷大量,负无穷大量,无穷大量}
+	设 $\{x_n\}$ 为一序列。
+
+	\begin{enumerate}
+		\item 若 $\forall M > 0, \exists N \in \N$，当 $n > N$ 时，$x_n > M$，则称 $\{x_n\}$ 是\emph{正无穷大量}（有时称极限为 $+\infty$ 并记为 $\lim\limits_{n \rightarrow \infty} = +\infty$）；
+		\item 若 $\forall M > 0, \exists N \in \N$，当 $n > N$ 时，$x_n < -M$，则称 $\{x_n\}$ 是\emph{负无穷大量}（有时称极限为 $-\infty$ 或 $\lim\limits_{n \rightarrow \infty} = - \infty$）；
+		\item 若 $\{|x_n|\}$ 是正无穷大量，则 $\{x_n\}$ 是\emph{无穷大量}（有时称 $\{x_n\}$ 的极限为 $\infty$，记为 $\lim\limits_{n \rightarrow \infty} = \infty$）。
+	\end{enumerate}
+\end{definition}
+
+注意：有穷极限 $a$ 被称为收敛到 $a$；无穷极限 $+\infty$、$-\infty$、$\infty$ 被称为发散到 $+\infty$、$-\infty$、$\infty$；有些序列既不收敛，也不是无穷大量，如 $x_n = (-1)^n$。凡提到极限存在，均指有穷极限的情形；若包括无穷极限时，则说其\emph{广义极限}存在，此时也说序列是\emph{广义收敛的}。
+
+\subsection{例题}
+
+设 $\lim\limits_{n \rightarrow \infty} x_n = a$，试证 $\lim\limits_{n \rightarrow \infty} \dfrac{x_1 + \cdots + x_n}{n} = a$，这里 $a$ 可以是有限实数，$+\infty$ 或 $-\infty$。
+
+\begin{proof}
+	先证 $a$ 是有限实数的情形。$\forall \varepsilon > 0$，由于 $\lim\limits_{n \rightarrow \infty} x_n = a$，故 $\exists N_1$，使得当 $n > N_1$ 时，有 $|x_n - a| < \dfrac{\varepsilon}{2}$。
+
+	对于取定的正整数 $N_1$，由于 $|x_1 - a| + |x_2 - a| + \cdots + |x_{N_1} - a|$ 是一个不随 $n$ 的变化而变化的常数，因此有：
+	$$
+	\lim\limits_{n \rightarrow \infty} \dfrac{|x_1 - a| + |x_2 - a| + \cdots + |x_{N_1} - a|}{n} = 0
+	$$
+
+	于是，又存在正整数 $N_2 > 0$，当 $n > N_2$ 时，有：
+	$$
+	\dfrac{|x_1 - a| + |x_2 - a| + \cdots + |x_{N_1} - a|}{n} < \dfrac{\varepsilon}{2}
+	$$
+
+	现在取 $N = \max\{N_1, N_2\}$，则当 $n > N$ 时，有：
+	$$
+	\begin{aligned}
+		\left| \dfrac{x_1 + \cdots + x_n}{n} - a \right| &\le \dfrac{|x_1 - a| + |x_2 - a| + \cdots + |x_n - a|}{n}
+		\\&=
+		\dfrac{|x_1 - a| + \cdots + |x_{N_1} - a|}{n} + \dfrac{|x_{N_1 + 1} - a| + \cdots + |x_n - a|}{n}
+		\\&\le
+		\dfrac{\varepsilon}{2} + \dfrac{n - N_1}{2n} \varepsilon < \varepsilon
+	\end{aligned}
+	$$
+	从而有 $\lim\limits_{n \rightarrow \infty} \dfrac{x_1 + \cdots + x_n}{n} = a$。
+
+	下证 $a = +\infty$ 的情形。$\forall M > 0$，由 $\lim\limits_{n \rightarrow \infty} x_n = +\infty$ 知，$\exists N_1$，当 $n > N_1$ 时，由 $x_n > 2M$，且 $x_1 + x_2 + \cdots + x_{N_1} > 0$，从而有：
+	$$
+	\dfrac{x_1 + \cdots + x_n}{n} > \dfrac{x_{N_1 + 1} + \cdots + x_n}{n} > \dfrac{2(n - N_1)}{n} M
+	$$
+
+	现在取 $N = 2N_1$，则当 $n > N$ 时，有：
+	$$
+	\dfrac{n - N_1}{n} = 1 - \dfrac{N_1}{n} > \dfrac{1}{2}
+	$$
+
+	从而有：
+	$$
+	\dfrac{x_1 + \cdots + x_n}{n} > \dfrac{2(n - N_1)}{n} M > M
+	$$
+
+	这就证明了 $\lim\limits_{n \rightarrow \infty} \dfrac{x_1 + \cdots + x_n}{n} = +\infty$。
+
+	$a = -\infty$ 的情形证明类似。
+\end{proof}
